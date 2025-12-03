@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!targetElement) return;
 
     try {
-        const response = await fetch(`/portfolio/components/${component.file}`);
+        const response = await fetch(`/components/${component.file}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
