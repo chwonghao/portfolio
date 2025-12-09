@@ -1,12 +1,47 @@
-<section id="projects" class="min-h-screen flex flex-col justify-center items-center p-6 md:p-12 snap-start">
-  <div class="max-w-5xl w-full">
-    <h2 class="text-3xl font-semibold mb-6 text-center">Dự án nổi bật</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="bg-white dark:bg-slate-800 border dark:border-gray-700 rounded-lg overflow-hidden shadow hover:shadow-lg">
-        <div class="p-6 flex flex-col h-full">
-          <h3 class="font-bold text-xl">BookNest</h3>
-          <p class="text-gray-600 mt-2 mb-4 flex-grow">Ứng dụng thương mại điện tử cho sách, xây dựng với React.js và Spring Boot.</p>
-          <a href="https://github.com/chwonghao/booknest" class="inline-block text-center bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-300 mt-auto">Xem trên GitHub →</a>
+<section id="projects" class="py-20 bg-white dark:bg-gray-800 snap-start">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Dự án đã thực hiện</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Project 1: BookNest -->
+      <div class="bg-gray-50 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2 text-white-900 dark:text-white">BookNest – Ứng dụng thương mại điện tử cho sách</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">10/2023 – Nay | Dự án cá nhân</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-green-200 text-green-800 dark:bg-green-900 dark:text-green-300 text-xs font-semibold px-2.5 py-0.5 rounded">Spring Boot</span>
+            <span class="bg-cyan-200 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300 text-xs font-semibold px-2.5 py-0.5 rounded">ReactJS</span>
+            <span class="bg-purple-200 text-purple-800 dark:bg-purple-900 dark:text-purple-300 text-xs font-semibold px-2.5 py-0.5 rounded">MySQL</span>
+            <span class="bg-gray-200 text-gray-800 dark:bg-gray-600 dark:text-gray-200 text-xs font-semibold px-2.5 py-0.5 rounded">Microservices</span>
+          </div>
+          <ul class="list-disc list-inside text-left space-y-2 text-white-700 dark:text-gray-300">
+            <li>Phân tích yêu cầu và thiết kế kiến trúc hệ thống.</li>
+            <li>Phát triển frontend responsive và backend với RESTful API (xác thực JWT).</li>
+            <li>Tích hợp đa ngôn ngữ, biểu đồ trực quan, gửi email.</li>
+            <li>Xây dựng các chức năng chính: giỏ hàng, thanh toán, dashboard quản trị.</li>
+            <li>Kiểm thử chức năng bằng Postman.</li>
+          </ul>
+          <div class="mt-6">
+            <a href="https://chwonghao.github.io/booknest-demo/" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Xem demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: Bubble Tea -->
+      <div class="bg-gray-50 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2 text-white-900 dark:text-white">Bubble Tea – Website quản lý sản phẩm</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">04/2024 – 07/2024 | Dự án nhóm (4 người)</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-green-200 text-green-800 dark:bg-green-900 dark:text-green-300 text-xs font-semibold px-2.5 py-0.5 rounded">Spring Boot</span>
+            <span class="bg-orange-200 text-orange-800 dark:bg-orange-900 dark:text-orange-300 text-xs font-semibold px-2.5 py-0.5 rounded">ThymeLeaf</span>
+            <span class="bg-purple-200 text-purple-800 dark:bg-purple-900 dark:text-purple-300 text-xs font-semibold px-2.5 py-0.5 rounded">MySQL</span>
+          </div>
+          <ul class="list-disc list-inside text-left space-y-2 text-white-700 dark:text-gray-300">
+            <li>Hợp tác phát triển hệ thống quản lý sản phẩm.</li>
+            <li>Thiết kế và triển khai RESTful API với phân quyền.</li>
+            <li>Xây dựng kiến trúc monolithic với cơ sở dữ liệu MySQL.</li>
+            <li>Hỗ trợ triển khai lên server nội bộ.</li>
+          </ul>
         </div>
       </div>
     </div>

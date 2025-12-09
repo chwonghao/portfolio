@@ -1,5 +1,32 @@
 <section id="hero" class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white snap-start">
   <h2 class="text-4xl font-bold mb-2">Nguyễn Chương Hào</h2>
-  <p class="text-lg mb-6">Full Stack Developer | React.js & Spring Boot</p>
-  <a href="NguyenChuongHao_FullStackDeveloper_Resume.pdf" class="bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-200">Xem CV</a>
+  <p class="text-lg mb-6">Java Intern | Spring Boot & React.js</p>
+  <button id="open-cv-modal" class="bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-200 transition-colors">Xem CV</button>
 </section>
+
+<!-- CV Modal -->
+<div id="cv-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+  <div class="bg-white text-gray-800 p-8 rounded-lg shadow-lg w-full max-w-2xl relative max-h-[90vh] overflow-y-auto">
+    <!-- Close Button -->
+    <button id="close-cv-modal" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+
+    <h3 class="text-2xl font-bold mb-6 text-center">Chọn phiên bản CV</h3>
+
+    <div class="mb-6">
+      <h4 class="text-xl font-semibold mb-3">CV Tiếng Việt</h4>
+      <div class="flex space-x-4">
+        <a href="CV_Java_Intern_VI.pdf" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Xem</a>
+        <a href="CV_Java_Intern_VI.pdf" download="NguyenChuongHao_Intern_Java.pdf" class="flex-1 text-center bg-green-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-600 transition-colors">Tải xuống</a>
+      </div>
+    </div>
+    <div class="mb-6">
+      <h4 class="text-xl font-semibold mb-3">CV Tiếng Anh</h4>
+      <div class="flex space-x-4">
+        <a href="CV_Java_Intern_EN.pdf" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Xem</a>
+        <a href="CV_Java_Intern_EN.pdf" download="NguyenChuongHao_Intern_Java.pdf" class="flex-1 text-center bg-green-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-600 transition-colors">Tải xuống</a>
+      </div>
+    </div>
+  </div>
+</div>

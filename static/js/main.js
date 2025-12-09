@@ -1,144 +1,133 @@
-import { initializeNavbar } from './navbar.js';
+/**
+ * Tải một component HTML từ file và chèn vào một phần tử trên trang.
+ * @param {string} id ID của phần tử đích.
+ * @param {string} url Đường dẫn đến file component HTML.
+ * @returns {Promise<void>}
+ */
+const loadComponent = (id, url) => {
+    return fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to load ${url}: ${response.statusText}`);
+            }
+            return response.text();
+        })
+        .then(data => {
+            const container = document.getElementById(id);
+            if (container) {
+                container.innerHTML = data;
+            }
+        });
+};
 
-document.addEventListener('DOMContentLoaded', async () => {
-  const components = [
-    { id: 'navbar', file: 'navbar.html' },
-    { id: 'hero', file: 'hero.html' },
-    { id: 'about', file: 'about.html' },
-    { id: 'experience', file: 'experience.html' },
-    { id: 'projects', file: 'projects.html' },
-    { id: 'footer', file: 'footer.html' },
-  ];
+/**
+ * Khởi tạo tất cả các thành phần tương tác và hiệu ứng sau khi các component đã được tải.
+ */
+const initializePage = () => {
+    // --- Logic chuyển đổi giao diện Sáng/Tối ---
+    const themeToggleBtn = document.querySelector('.theme-toggle-btn');
+    if (themeToggleBtn) {
+        const themeToggleDarkIcon = document.querySelector('.theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.querySelector('.theme-toggle-light-icon');
 
-  const loadComponent = async (component) => {
-    const targetElement = document.getElementById(component.id);
-    if (!targetElement) return;
+        const setTheme = (isDark) => {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                if(themeToggleLightIcon) themeToggleLightIcon.classList.remove('hidden');
+                if(themeToggleDarkIcon) themeToggleDarkIcon.classList.add('hidden');
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                if(themeToggleDarkIcon) themeToggleDarkIcon.classList.remove('hidden');
+                if(themeToggleLightIcon) themeToggleLightIcon.classList.add('hidden');
+                localStorage.setItem('color-theme', 'light');
+            }
+        };
 
-    try {
-        const response = await fetch(`/portfolio/components/${component.file}`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const html = await response.text();
+        const isDarkMode = localStorage.getItem('color-theme') === 'dark' ||
+            (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        setTheme(isDarkMode);
 
-        if (!html || html.trim().length === 0) {
-            console.error(`Component file is empty: ${component.file}`);
-            return;
-        }
-
-        targetElement.innerHTML = html;
-        
-        // Nếu component có hàm khởi tạo, hãy gọi nó
-        if (component.init) {
-            component.init();
-        }
-    } catch (error) {
-        console.error(`Error loading component: ${component.file}`, error);
+        themeToggleBtn.addEventListener('click', () => {
+            setTheme(!document.documentElement.classList.contains('dark'));
+        });
     }
-  };
 
-  // Hàm này chứa các logic không phụ thuộc vào component cụ thể
-  function initializePageLogic() {
-    // --- Logic cho Dark Mode ---
-    const themeToggleDarkIcons = document.querySelectorAll('.theme-toggle-dark-icon');
-    const themeToggleLightIcons = document.querySelectorAll('.theme-toggle-light-icon');
+    // --- Logic hiển thị CV Modal ---
+    const openCvModalBtn = document.getElementById('open-cv-modal');
+    const closeCvModalBtn = document.getElementById('close-cv-modal');
+    const cvModal = document.getElementById('cv-modal');
 
-    const updateThemeUI = (isDarkMode) => {
-      if (isDarkMode) {
-        document.documentElement.classList.add('dark');
-        themeToggleLightIcons.forEach(icon => icon.classList.remove('hidden'));
-        themeToggleDarkIcons.forEach(icon => icon.classList.add('hidden'));
-      } else {
-        document.documentElement.classList.remove('dark');
-        themeToggleDarkIcons.forEach(icon => icon.classList.remove('hidden'));
-        themeToggleLightIcons.forEach(icon => icon.classList.add('hidden'));
-      }
-    };
+    if (openCvModalBtn && cvModal) {
+        openCvModalBtn.addEventListener('click', () => {
+            cvModal.classList.remove('hidden');
+            cvModal.classList.add('flex');
+        });
+    }
+    if (closeCvModalBtn && cvModal) {
+        closeCvModalBtn.addEventListener('click', () => {
+            cvModal.classList.add('hidden');
+            cvModal.classList.remove('flex');
+        });
+    }
+    if (cvModal) {
+        cvModal.addEventListener('click', (event) => {
+            if (event.target === cvModal) {
+                cvModal.classList.add('hidden');
+                cvModal.classList.remove('flex');
+            }
+        });
+    }
 
-    // Lắng nghe sự kiện thay đổi theme từ navbar
-    document.addEventListener('themeChanged', (e) => {
-      updateThemeUI(e.detail.theme === 'dark');
+    // --- Khởi tạo ScrollReveal ---
+    if (typeof ScrollReveal === 'undefined') {
+        console.error('ScrollReveal is not loaded. Make sure the script is included in index.html.');
+        return;
+    }
+
+    const sr = ScrollReveal({
+        origin: 'bottom',
+        distance: '40px',  // Giảm khoảng cách mặc định
+        duration: 2000,   // Tăng thời gian để hiệu ứng chậm hơn
+        delay: 200,
     });
 
-    // Cập nhật theme lần đầu khi tải trang
-    const isDarkMode = localStorage.getItem('color-theme') === 'dark' ||
-                       (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    updateThemeUI(isDarkMode);
+    // --- Cấu hình hiệu ứng cho các phần tử ---
+    // Section Hero - Ghi đè cài đặt chung để có hiệu ứng nhanh và ấn tượng hơn
+    sr.reveal('#hero h2, #hero p, #hero button', { interval: 150, duration: 1000, distance: '80px' });
+    // Tiêu đề các section
+    sr.reveal('#about h2, #experience h2, #projects h2, #footer h2', { origin: 'top' });
 
+    // Section Giới thiệu (About) - xuất hiện từ bên trái
+    sr.reveal('#about p, #about h3', { delay: 300, origin: 'left' });
+    sr.reveal('#about .flex-wrap span', { interval: 100, delay: 400 }); // Giữ nguyên từ dưới lên
 
-    // --- Logic cuộn trang tùy chỉnh và Active Link ---
-    const sections = Array.from(document.querySelectorAll('section[id], footer[id]'));
-    const navLinks = document.querySelectorAll('.nav-link');
-    let isScrolling = false;
-    let currentSectionIndex = 0;
+    // Section Học vấn - xuất hiện xen kẽ từ trái và phải
+    sr.reveal('#experience .max-w-3xl > .relative:nth-child(odd)', { origin: 'left' });
+    sr.reveal('#experience .max-w-3xl > .relative:nth-child(even)', { origin: 'right' });
 
-    const scrollToSection = (index) => {
-      if (isScrolling || index < 0 || index >= sections.length) return;
-      isScrolling = true;
-      sections[index].scrollIntoView({ behavior: 'smooth' });
-      setTimeout(() => {
-        isScrolling = false;
-      }, 1000);
-    };
-
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    // Chỉ xử lý cuộn bằng con lăn chuột trên thiết bị không cảm ứng (desktop)
-    if (!isTouchDevice) {
-      window.addEventListener('wheel', (event) => {
-        event.preventDefault();
-        if (isScrolling) return;
-        const direction = event.deltaY > 0 ? 1 : -1;
-        const newIndex = currentSectionIndex + direction;
-        if (newIndex >= 0 && newIndex < sections.length) {
-          scrollToSection(newIndex);
-        }
-      }, { passive: false });
-    }
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetIndex = sections.findIndex(section => `#${section.id}` === targetId);
-        scrollToSection(targetIndex);
-      });
+    // Section Dự án - hiệu ứng lật (rotate)
+    sr.reveal('#projects .grid > div', {
+        rotate: { x: 0, y: 80, z: 0 }, // Xoay 80 độ quanh trục Y
+        duration: 1500
     });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          currentSectionIndex = sections.findIndex(section => section.id === id);
-          navLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-          });
-        }
-      });
-    }, { threshold: 0.7 });
+    sr.reveal('#contact .flex', { origin: 'top', duration: 1000 });
+    sr.reveal('#contact p', { origin: 'top', duration: 1000, delay: 200 });
+};
 
-    sections.forEach(section => observer.observe(section));
+// --- Thực thi chính ---
+document.addEventListener('DOMContentLoaded', () => {
+    const componentsToLoad = [
+        loadComponent('navbar', 'components/navbar.html'),
+        loadComponent('hero', 'components/hero.html'),
+        loadComponent('about', 'components/about.html'),
+        loadComponent('experience', 'components/experience.html'),
+        loadComponent('projects', 'components/projects.html'),
+        loadComponent('footer', 'components/footer.html')
+    ];
 
-    if (window.ScrollReveal) {
-      ScrollReveal({
-        reset: false,
-        distance: '60px',
-        duration: 1000,
-        easing: 'ease-in-out',
-      });
-      ScrollReveal().reveal('#hero, #navbar', { delay: 400, origin: 'top' });
-      ScrollReveal().reveal('#about', { delay: 400, origin: 'left' });
-      ScrollReveal().reveal('#experience, #projects, #footer', { delay: 400, origin: 'bottom', interval: 200 });
-    }
-  }
-
-  // --- QUY TRÌNH TẢI ---
-  // Gán hàm khởi tạo cho các component cần thiết
-  components.find(c => c.id === 'navbar').init = initializeNavbar;
-
-  // Tải tất cả các component song song và khởi tạo chúng khi hoàn tất
-  await Promise.all(components.map(loadComponent));
-  
-  // Khởi tạo các logic chung của trang sau khi tất cả component đã được tải
-  requestAnimationFrame(initializePageLogic);
-
+    Promise.all(componentsToLoad)
+        .then(initializePage)
+        .catch(error => console.error("Error loading components:", error));
 });
