@@ -1,49 +1,142 @@
-<section id="projects" class="py-20 bg-white dark:bg-gray-800 snap-start">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-12">Dự án đã thực hiện</h2>
-    <div class="grid md:grid-cols-2 gap-8">
-      <!-- Project 1: BookNest -->
-      <div class="bg-gray-50 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2 text-white-900 dark:text-white">BookNest – Ứng dụng thương mại điện tử cho sách</h3>
-          <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">10/2023 – Nay | Dự án cá nhân</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="bg-green-200 text-green-800 dark:bg-green-900 dark:text-green-300 text-xs font-semibold px-2.5 py-0.5 rounded">Spring Boot</span>
-            <span class="bg-cyan-200 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300 text-xs font-semibold px-2.5 py-0.5 rounded">ReactJS</span>
-            <span class="bg-purple-200 text-purple-800 dark:bg-purple-900 dark:text-purple-300 text-xs font-semibold px-2.5 py-0.5 rounded">MySQL</span>
-            <span class="bg-gray-200 text-gray-800 dark:bg-gray-600 dark:text-gray-200 text-xs font-semibold px-2.5 py-0.5 rounded">Microservices</span>
+<section id="projects" class="py-24 relative overflow-hidden" style="background: #080820;">
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <p class="section-eyebrow">MY WORK</p>
+      <h2 class="section-title">Dự án đã thực hiện</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <!-- Project 1: Gahu CMS -->
+      <div class="project-card group">
+        <div class="project-card-glow" style="--glow: #60a5fa;"></div>
+        <div class="p-6 relative z-10">
+          <div class="flex items-start justify-between mb-4">
+            <div class="project-icon"
+              style="background: linear-gradient(135deg, #60a5fa22, #a78bfa22); border-color: #60a5fa44;">
+              <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <span class="project-status-badge"
+              style="background: #4ade8020; color: #4ade80; border-color: #4ade8040;">🟢 Đang phát triển</span>
           </div>
-          <ul class="list-disc list-inside text-left space-y-2 text-white-700 dark:text-gray-300">
-            <li>Phân tích yêu cầu và thiết kế kiến trúc hệ thống.</li>
-            <li>Phát triển frontend responsive và backend với RESTful API (xác thực JWT).</li>
-            <li>Tích hợp đa ngôn ngữ, biểu đồ trực quan, gửi email.</li>
-            <li>Xây dựng các chức năng chính: giỏ hàng, thanh toán, dashboard quản trị.</li>
-            <li>Kiểm thử chức năng bằng Postman.</li>
+
+          <h3 class="text-xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">Gahu CMS – Game
+            Content Manager</h3>
+          <p class="text-sm text-gray-500 mb-4">11/2025 – Nay · Dự án thực tế tại Mobifos</p>
+
+          <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+            Hệ thống CMS quản lý nội dung và cấu hình cho các game mobile của Gahu Studio. Cho phép team game designer
+            chỉnh sửa level, item, notification... mà không cần deploy lại.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="project-tag" style="--c: #60a5fa;">Next.js</span>
+            <span class="project-tag" style="--c: #4ade80;">NestJS</span>
+            <span class="project-tag" style="--c: #f59e0b;">Microservices</span>
+            <span class="project-tag" style="--c: #a78bfa;">TypeScript</span>
+            <span class="project-tag" style="--c: #f59e0b;">Docker</span>
+            <span class="project-tag" style="--c: #f472b6;">MongoDB</span>
+          </div>
+
+          <ul class="project-list">
+            <li>Phát triển CMS dashboard phức tạp với dynamic forms và real-time preview.</li>
+            <li>Kiến trúc Microservices, giao tiếp qua message queue.</li>
+            <li>CI/CD pipeline tự động deployment lên server Linux.</li>
           </ul>
-          <div class="mt-6">
-            <a href="https://chwonghao.github.io/booknest-demo/" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Xem demo</a>
-          </div>
         </div>
       </div>
 
-      <!-- Project 2: Bubble Tea -->
-      <div class="bg-gray-50 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2 text-white-900 dark:text-white">Bubble Tea – Website quản lý sản phẩm</h3>
-          <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">04/2024 – 07/2024 | Dự án nhóm (4 người)</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="bg-green-200 text-green-800 dark:bg-green-900 dark:text-green-300 text-xs font-semibold px-2.5 py-0.5 rounded">Spring Boot</span>
-            <span class="bg-orange-200 text-orange-800 dark:bg-orange-900 dark:text-orange-300 text-xs font-semibold px-2.5 py-0.5 rounded">ThymeLeaf</span>
-            <span class="bg-purple-200 text-purple-800 dark:bg-purple-900 dark:text-purple-300 text-xs font-semibold px-2.5 py-0.5 rounded">MySQL</span>
+      <!-- Project 2: BookNest -->
+      <div class="project-card group">
+        <div class="project-card-glow" style="--glow: #a78bfa;"></div>
+        <div class="p-6 relative z-10">
+          <div class="flex items-start justify-between mb-4">
+            <div class="project-icon"
+              style="background: linear-gradient(135deg, #a78bfa22, #f472b622); border-color: #a78bfa44;">
+              <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <div class="flex gap-2">
+              <a href="https://chwonghao.github.io/booknest-demo/" target="_blank" rel="noopener noreferrer"
+                class="project-link-btn">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+                Demo
+              </a>
+            </div>
           </div>
-          <ul class="list-disc list-inside text-left space-y-2 text-white-700 dark:text-gray-300">
-            <li>Hợp tác phát triển hệ thống quản lý sản phẩm.</li>
-            <li>Thiết kế và triển khai RESTful API với phân quyền.</li>
-            <li>Xây dựng kiến trúc monolithic với cơ sở dữ liệu MySQL.</li>
-            <li>Hỗ trợ triển khai lên server nội bộ.</li>
+
+          <h3 class="text-xl font-bold text-white mb-1 group-hover:text-purple-400 transition-colors">BookNest –
+            E-Commerce cho sách</h3>
+          <p class="text-sm text-gray-500 mb-4">10/2023 – Nay · Dự án cá nhân</p>
+
+          <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+            Nền tảng thương mại điện tử chuyên về sách với đầy đủ tính năng từ giỏ hàng, thanh toán, đến dashboard quản
+            trị admin.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="project-tag" style="--c: #4ade80;">Spring Boot</span>
+            <span class="project-tag" style="--c: #60a5fa;">ReactJS</span>
+            <span class="project-tag" style="--c: #f472b6;">MySQL</span>
+            <span class="project-tag" style="--c: #f59e0b;">JWT Auth</span>
+          </div>
+
+          <ul class="project-list">
+            <li>RESTful API với xác thực JWT, phân quyền RBAC.</li>
+            <li>Frontend responsive, đa ngôn ngữ, biểu đồ thống kê.</li>
+            <li>Giỏ hàng, thanh toán, gửi email xác nhận đơn hàng.</li>
+            <li>Kiểm thử API với Postman.</li>
           </ul>
         </div>
       </div>
+
+      <!-- Project 3: Bubble Tea -->
+      <div class="project-card group">
+        <div class="project-card-glow" style="--glow: #4ade80;"></div>
+        <div class="p-6 relative z-10">
+          <div class="flex items-start justify-between mb-4">
+            <div class="project-icon"
+              style="background: linear-gradient(135deg, #4ade8022, #60a5fa22); border-color: #4ade8044;">
+              <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <span class="project-status-badge" style="background: #60a5fa20; color: #60a5fa; border-color: #60a5fa40;">✅
+              Hoàn thành</span>
+          </div>
+
+          <h3 class="text-xl font-bold text-white mb-1 group-hover:text-green-400 transition-colors">Bubble Tea – Quản
+            lý sản phẩm</h3>
+          <p class="text-sm text-gray-500 mb-4">04/2024 – 07/2024 · Dự án nhóm (4 người)</p>
+
+          <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+            Hệ thống quản lý sản phẩm và đơn hàng cho cửa hàng trà sữa với giao diện admin đầy đủ chức năng.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="project-tag" style="--c: #4ade80;">Spring Boot</span>
+            <span class="project-tag" style="--c: #f59e0b;">Thymeleaf</span>
+            <span class="project-tag" style="--c: #f472b6;">MySQL</span>
+          </div>
+
+          <ul class="project-list">
+            <li>Hợp tác nhóm, phân chia task và code review qua Git.</li>
+            <li>RESTful API với phân quyền, giao diện admin quản lý đơn hàng.</li>
+            <li>Triển khai lên server nội bộ, kiến trúc Monolithic.</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

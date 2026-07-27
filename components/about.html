@@ -1,21 +1,102 @@
-<section id="about" class="py-20 bg-white dark:bg-gray-800 snap-start">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-12">Giới thiệu về tôi</h2>
-    <div class="max-w-3xl mx-auto text-center">
-      <p class="text-lg leading-relaxed mb-8">
-        Là một thực tập sinh Java, tôi mong muốn áp dụng kiến thức học thuật và kinh nghiệm từ các dự án vào công việc thực tế. Tôi hướng tới trở thành một lập trình viên Java chuyên nghiệp thông qua việc tham gia xây dựng các ứng dụng web và hỗ trợ nhóm phát triển sản phẩm chất lượng cao. Đồng thời, tôi cam kết học hỏi các phương pháp tốt nhất trong thiết kế hệ thống, kiểm thử và triển khai, không ngừng cải thiện kỹ năng và thích ứng với thử thách mới. Mục tiêu của tôi là tạo ra giá trị cho công ty và tích lũy kinh nghiệm thực tiễn làm nền tảng vững chắc cho sự nghiệp sau này.
-      </p>
-      <h3 class="text-2xl font-semibold mb-6">Kỹ năng</h3>
-      <div class="flex flex-wrap justify-center gap-4">
-        <span class="bg-blue-200 text-blue-800 dark:bg-blue-900 dark:text-blue-300 px-4 py-2 rounded-full font-semibold transition-transform duration-200 hover:scale-110">Java</span>
-        <span class="bg-yellow-200 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300 px-4 py-2 rounded-full font-semibold transition-transform duration-200 hover:scale-110">JavaScript</span>
-        <span class="bg-green-200 text-green-800 dark:bg-green-900 dark:text-green-300 px-4 py-2 rounded-full font-semibold transition-transform duration-200 hover:scale-110">Spring Boot</span>
-        <span class="bg-cyan-200 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300 px-4 py-2 rounded-full font-semibold transition-transform duration-200 hover:scale-110">ReactJS</span>
-        <span class="bg-indigo-200 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300 px-4 py-2 rounded-full font-semibold transition-transform duration-200 hover:scale-110">RESTful API</span>
-        <span class="bg-purple-200 text-purple-800 dark:bg-purple-900 dark:text-purple-300 px-4 py-2 rounded-full font-semibold transition-transform duration-200 hover:scale-110">MySQL</span>
-        <span class="bg-gray-200 text-gray-800 dark:bg-gray-600 dark:text-gray-200 px-4 py-2 rounded-full font-semibold transition-transform duration-200 hover:scale-110">Làm việc nhóm</span>
-        <span class="bg-gray-200 text-gray-800 dark:bg-gray-600 dark:text-gray-200 px-4 py-2 rounded-full font-semibold transition-transform duration-200 hover:scale-110">Giải quyết vấn đề</span>
-        <span class="bg-gray-200 text-gray-800 dark:bg-gray-600 dark:text-gray-200 px-4 py-2 rounded-full font-semibold transition-transform duration-200 hover:scale-110">Thích ứng nhanh</span>
+<section id="about" class="py-24 relative overflow-hidden" style="background: #080820;">
+  <!-- Subtle background -->
+  <div class="about-bg-glow"></div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <p class="section-eyebrow">WHO AM I</p>
+      <h2 class="section-title">Giới thiệu về tôi</h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
+      <!-- Left: Bio -->
+      <div>
+        <p class="text-gray-300 text-lg leading-relaxed mb-6">
+          Là một <strong class="text-blue-400">Full-Stack Developer</strong> với hơn 6 tháng kinh nghiệm thực tế, tôi đang làm việc tại <a href="https://gahu.net/" target="_blank" class="text-purple-400 hover:text-purple-300 underline underline-offset-4 transition-colors">Gahu Studio · Mobifos</a>, nơi tôi tham gia xây dựng các sản phẩm game mobile và web.
+        </p>
+        <p class="text-gray-400 leading-relaxed mb-8">
+          Tôi có kinh nghiệm phát triển với <strong class="text-emphasis">Next.js</strong> và <strong class="text-emphasis">NestJS</strong> trong kiến trúc <strong class="text-emphasis">Microservices</strong>, triển khai hạ tầng với <strong class="text-emphasis">DevOps</strong>, và có nền tảng về <strong class="text-emphasis">UI Design</strong>. Tôi luôn không ngừng học hỏi và thích ứng nhanh với các công nghệ mới.
+        </p>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-4">
+          <div class="stat-card">
+            <div class="stat-number">6+</div>
+            <div class="stat-label">Tháng kinh nghiệm</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">2+</div>
+            <div class="stat-label">Dự án thực tế</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Công nghệ</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Skills -->
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-6">Tech Stack & Kỹ năng</h3>
+        <div class="space-y-3">
+
+          <!-- Category: Frontend -->
+          <div class="skill-category">
+            <span class="skill-category-label" style="color: #60a5fa;">Frontend</span>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="skill-tag" style="--c: #60a5fa20; --b: #60a5fa;">Next.js</span>
+              <span class="skill-tag" style="--c: #60a5fa20; --b: #60a5fa;">ReactJS</span>
+              <span class="skill-tag" style="--c: #60a5fa20; --b: #60a5fa;">TypeScript</span>
+              <span class="skill-tag" style="--c: #60a5fa20; --b: #60a5fa;">TailwindCSS</span>
+            </div>
+          </div>
+
+          <!-- Category: Backend -->
+          <div class="skill-category">
+            <span class="skill-category-label" style="color: #4ade80;">Backend</span>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="skill-tag" style="--c: #4ade8020; --b: #4ade80;">NestJS</span>
+              <span class="skill-tag" style="--c: #4ade8020; --b: #4ade80;">Java · Spring Boot</span>
+              <span class="skill-tag" style="--c: #4ade8020; --b: #4ade80;">RESTful API</span>
+              <span class="skill-tag" style="--c: #4ade8020; --b: #4ade80;">Microservices</span>
+              <span class="skill-tag" style="--c: #4ade8020; --b: #4ade80;">MySQL · MongoDB</span>
+            </div>
+          </div>
+
+          <!-- Category: DevOps -->
+          <div class="skill-category">
+            <span class="skill-category-label" style="color: #f59e0b;">DevOps & Cloud</span>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="skill-tag" style="--c: #f59e0b20; --b: #f59e0b;">Docker</span>
+              <span class="skill-tag" style="--c: #f59e0b20; --b: #f59e0b;">CI/CD</span>
+              <span class="skill-tag" style="--c: #f59e0b20; --b: #f59e0b;">Git / GitHub</span>
+              <span class="skill-tag" style="--c: #f59e0b20; --b: #f59e0b;">Linux Server</span>
+            </div>
+          </div>
+
+          <!-- Category: Design -->
+          <div class="skill-category">
+            <span class="skill-category-label" style="color: #f472b6;">Design</span>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="skill-tag" style="--c: #f472b620; --b: #f472b6;">Figma</span>
+              <span class="skill-tag" style="--c: #f472b620; --b: #f472b6;">UI Design cơ bản</span>
+              <span class="skill-tag" style="--c: #f472b620; --b: #f472b6;">Responsive Design</span>
+            </div>
+          </div>
+
+          <!-- Category: Soft Skills -->
+          <div class="skill-category">
+            <span class="skill-category-label" style="color: #a78bfa;">Kỹ năng mềm</span>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="skill-tag" style="--c: #a78bfa20; --b: #a78bfa;">Làm việc nhóm</span>
+              <span class="skill-tag" style="--c: #a78bfa20; --b: #a78bfa;">Giải quyết vấn đề</span>
+              <span class="skill-tag" style="--c: #a78bfa20; --b: #a78bfa;">Thích ứng nhanh</span>
+              <span class="skill-tag" style="--c: #a78bfa20; --b: #a78bfa;">Tiếng Anh B1</span>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>

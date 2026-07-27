@@ -27,29 +27,55 @@ const initializePage = () => {
     // --- Logic chuyển đổi giao diện Sáng/Tối ---
     const themeToggleBtn = document.querySelector('.theme-toggle-btn');
     if (themeToggleBtn) {
-        const themeToggleDarkIcon = document.querySelector('.theme-toggle-dark-icon');
-        const themeToggleLightIcon = document.querySelector('.theme-toggle-light-icon');
+        const darkIcon = document.querySelector('.theme-toggle-dark-icon');   // icon trăng → hiện khi đang light
+        const lightIcon = document.querySelector('.theme-toggle-light-icon'); // icon mặt trời → hiện khi đang dark
 
+        /**
+         * isDark = true  → giao diện tối (dark)
+         * isDark = false → giao diện sáng (light)
+         */
         const setTheme = (isDark) => {
+            const html = document.documentElement;
             if (isDark) {
-                document.documentElement.classList.add('dark');
-                if(themeToggleLightIcon) themeToggleLightIcon.classList.remove('hidden');
-                if(themeToggleDarkIcon) themeToggleDarkIcon.classList.add('hidden');
+                html.classList.remove('light');
+                html.classList.add('dark');
+                // Đang tối → hiện icon mặt trời để người dùng chuyển sang sáng
+                if (lightIcon) lightIcon.classList.remove('hidden');
+                if (darkIcon)  darkIcon.classList.add('hidden');
                 localStorage.setItem('color-theme', 'dark');
             } else {
-                document.documentElement.classList.remove('dark');
-                if(themeToggleDarkIcon) themeToggleDarkIcon.classList.remove('hidden');
-                if(themeToggleLightIcon) themeToggleLightIcon.classList.add('hidden');
+                html.classList.remove('dark');
+                html.classList.add('light');
+                // Đang sáng → hiện icon trăng để người dùng chuyển sang tối
+                if (darkIcon)  darkIcon.classList.remove('hidden');
+                if (lightIcon) lightIcon.classList.add('hidden');
                 localStorage.setItem('color-theme', 'light');
             }
         };
 
-        const isDarkMode = localStorage.getItem('color-theme') === 'dark' ||
-            (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        setTheme(isDarkMode);
+        // Mặc định dark mode trừ khi người dùng đã chọn light
+        const savedTheme = localStorage.getItem('color-theme');
+        const prefersDark = !savedTheme || savedTheme === 'dark';
+        setTheme(prefersDark);
 
         themeToggleBtn.addEventListener('click', () => {
-            setTheme(!document.documentElement.classList.contains('dark'));
+            const isCurrentlyDark = document.documentElement.classList.contains('dark');
+            setTheme(!isCurrentlyDark);
+        });
+    }
+
+    // --- Mobile menu toggle ---
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        // Đóng menu khi click vào link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
         });
     }
 
@@ -79,41 +105,72 @@ const initializePage = () => {
         });
     }
 
+    // --- Active nav link highlight on scroll ---
+    const sections = document.querySelectorAll('section[id], footer[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const highlightNav = () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.style.color = '';
+            link.style.background = '';
+            const href = link.getAttribute('href')?.replace('#', '');
+            if (href === current) {
+                link.style.color = 'white';
+                link.style.background = 'rgba(255,255,255,0.1)';
+            }
+        });
+    };
+
+    window.addEventListener('scroll', highlightNav, { passive: true });
+
     // --- Khởi tạo ScrollReveal ---
     if (typeof ScrollReveal === 'undefined') {
-        console.error('ScrollReveal is not loaded. Make sure the script is included in index.html.');
+        console.warn('ScrollReveal not loaded.');
         return;
     }
 
     const sr = ScrollReveal({
         origin: 'bottom',
-        distance: '40px',  // Giảm khoảng cách mặc định
-        duration: 2000,   // Tăng thời gian để hiệu ứng chậm hơn
-        delay: 200,
+        distance: '30px',
+        duration: 800,
+        delay: 100,
+        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        reset: false,
     });
 
-    // --- Cấu hình hiệu ứng cho các phần tử ---
-    // Section Hero - Ghi đè cài đặt chung để có hiệu ứng nhanh và ấn tượng hơn
-    sr.reveal('#hero h2, #hero p, #hero button', { interval: 150, duration: 1000, distance: '80px' });
-    // Tiêu đề các section
-    sr.reveal('#about h2, #experience h2, #projects h2, #footer h2', { origin: 'top' });
+    // Hero
+    sr.reveal('#hero h1', { origin: 'bottom', duration: 900, delay: 100, distance: '50px' });
+    sr.reveal('#hero p', { origin: 'bottom', duration: 800, delay: 250, distance: '30px' });
+    sr.reveal('#hero .flex.flex-wrap', { origin: 'bottom', duration: 800, delay: 350, distance: '25px' });
+    sr.reveal('#hero .company-badge', { origin: 'bottom', duration: 700, delay: 450, distance: '20px' });
+    sr.reveal('#hero .btn-primary, #hero .btn-secondary', { origin: 'bottom', duration: 700, delay: 550, distance: '20px', interval: 100 });
 
-    // Section Giới thiệu (About) - xuất hiện từ bên trái
-    sr.reveal('#about p, #about h3', { delay: 300, origin: 'left' });
-    sr.reveal('#about .flex-wrap span', { interval: 100, delay: 400 }); // Giữ nguyên từ dưới lên
+    // About
+    sr.reveal('#about .section-eyebrow, #about .section-title', { origin: 'top', duration: 700 });
+    sr.reveal('#about p', { origin: 'left', duration: 700, delay: 150 });
+    sr.reveal('#about .stat-card', { interval: 100, duration: 600, delay: 200 });
+    sr.reveal('#about h3', { origin: 'right', duration: 600, delay: 100 });
+    sr.reveal('#about .skill-category', { interval: 80, duration: 600, delay: 250 });
 
-    // Section Học vấn - xuất hiện xen kẽ từ trái và phải
-    sr.reveal('#experience .max-w-3xl > .relative:nth-child(odd)', { origin: 'left' });
-    sr.reveal('#experience .max-w-3xl > .relative:nth-child(even)', { origin: 'right' });
+    // Experience
+    sr.reveal('#experience .section-eyebrow, #experience .section-title', { origin: 'top', duration: 700 });
+    sr.reveal('#experience .timeline-group-label', { origin: 'left', duration: 600, delay: 100 });
+    sr.reveal('#experience .timeline-card', { origin: 'left', duration: 700, delay: 150, interval: 100 });
 
-    // Section Dự án - hiệu ứng lật (rotate)
-    sr.reveal('#projects .grid > div', {
-        rotate: { x: 0, y: 80, z: 0 }, // Xoay 80 độ quanh trục Y
-        duration: 1500
-    });
+    // Projects
+    sr.reveal('#projects .section-eyebrow, #projects .section-title', { origin: 'top', duration: 700 });
+    sr.reveal('#projects .project-card', { interval: 120, duration: 700, delay: 100 });
 
-    sr.reveal('#contact .flex', { origin: 'top', duration: 1000 });
-    sr.reveal('#contact p', { origin: 'top', duration: 1000, delay: 200 });
+    // Contact
+    sr.reveal('#contact h2, #contact p', { origin: 'top', duration: 700 });
+    sr.reveal('#contact ul', { interval: 80, duration: 600, delay: 200 });
 };
 
 // --- Thực thi chính ---
@@ -124,7 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loadComponent('about', 'components/about.html'),
         loadComponent('experience', 'components/experience.html'),
         loadComponent('projects', 'components/projects.html'),
-        loadComponent('footer', 'components/footer.html')
     ];
 
     Promise.all(componentsToLoad)

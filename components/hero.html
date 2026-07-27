@@ -1,31 +1,98 @@
-<section id="hero" class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white snap-start">
-  <h2 class="text-4xl font-bold mb-2">Nguyễn Chương Hào</h2>
-  <p class="text-lg mb-6">Java Intern | Spring Boot & React.js</p>
-  <button id="open-cv-modal" class="bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-200 transition-colors">Xem CV</button>
+<!-- Hero Section -->
+<section id="hero" class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden" style="background: #060614;">
+  <!-- Animated background blobs -->
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+
+  <!-- Grid overlay -->
+  <div class="hero-grid"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+    <!-- Badge -->
+    <div class="hero-badge mb-6">
+      <span class="hero-badge-dot"></span>
+      <span>Đang tìm kiếm cơ hội mới</span>
+    </div>
+
+    <!-- Name -->
+    <h1 class="text-5xl md:text-7xl font-black mb-4 tracking-tight" style="line-height: 1.1;">
+      <span class="hero-name-first">Nguyễn</span><br>
+      <span class="hero-name-gradient" style="background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Chương Hào</span>
+    </h1>
+
+    <!-- Role -->
+    <p class="text-xl md:text-2xl font-medium mb-3 hero-subtitle">
+      Full-Stack Developer
+    </p>
+    <div class="flex flex-wrap justify-center gap-2 mb-8">
+      <span class="hero-tech-tag" style="--clr: #60a5fa;">Next.js</span>
+      <span class="hero-tech-tag" style="--clr: #4ade80;">NestJS</span>
+      <span class="hero-tech-tag" style="--clr: #f59e0b;">Microservices</span>
+      <span class="hero-tech-tag" style="--clr: #a78bfa;">DevOps</span>
+      <span class="hero-tech-tag" style="--clr: #f472b6;">UI Designer</span>
+    </div>
+
+    <!-- Company badge -->
+    <div class="flex justify-center mb-10">
+      <a href="https://gahu.net/" target="_blank" rel="noopener noreferrer" class="company-badge group">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+        <span>Gahu Studio · Công ty Cổ phần Mobifos</span>
+        <svg class="w-3 h-3 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-wrap justify-center gap-4">
+      <button id="open-cv-modal" class="btn-primary">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        Xem CV
+      </button>
+      <a href="#projects" class="btn-secondary">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+        Xem dự án
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+    <span class="text-xs text-gray-500">Scroll</span>
+    <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
 </section>
 
 <!-- CV Modal -->
-<div id="cv-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
-  <div class="bg-white text-gray-800 p-8 rounded-lg shadow-lg w-full max-w-2xl relative max-h-[90vh] overflow-y-auto">
-    <!-- Close Button -->
-    <button id="close-cv-modal" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+<div id="cv-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4" style="background: rgba(0,0,0,0.8); backdrop-filter: blur(12px);">
+  <div class="relative w-full max-w-md rounded-2xl p-8 border" style="background: rgba(15,15,40,0.95); border-color: rgba(255,255,255,0.1);">
+    <button id="close-cv-modal" class="absolute top-4 right-4 p-2 rounded-lg hover:bg-white/10 transition-all text-gray-400 hover:text-white">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
     </button>
 
-    <h3 class="text-2xl font-bold mb-6 text-center">Chọn phiên bản CV</h3>
+    <h3 class="text-xl font-bold mb-2 text-white">Tải CV</h3>
+    <p class="text-gray-400 text-sm mb-6">Chọn ngôn ngữ phiên bản CV bạn muốn</p>
 
-    <div class="mb-6">
-      <h4 class="text-xl font-semibold mb-3">CV Tiếng Việt</h4>
-      <div class="flex space-x-4">
-        <a href="CV_Java_Intern_VI.pdf" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Xem</a>
-        <a href="CV_Java_Intern_VI.pdf" download="NguyenChuongHao_Intern_Java.pdf" class="flex-1 text-center bg-green-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-600 transition-colors">Tải xuống</a>
+    <div class="space-y-4">
+      <div class="cv-card">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-2xl">🇻🇳</span>
+          <span class="font-semibold text-white">CV Tiếng Việt</span>
+        </div>
+        <div class="flex gap-3">
+          <a href="CV_Java_Intern_VI.pdf" target="_blank" rel="noopener noreferrer" class="cv-btn-view">👁 Xem</a>
+          <a href="CV_Java_Intern_VI.pdf" download="NguyenChuongHao_CV.pdf" class="cv-btn-download">⬇ Tải xuống</a>
+        </div>
       </div>
-    </div>
-    <div class="mb-6">
-      <h4 class="text-xl font-semibold mb-3">CV Tiếng Anh</h4>
-      <div class="flex space-x-4">
-        <a href="CV_Java_Intern_EN.pdf" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Xem</a>
-        <a href="CV_Java_Intern_EN.pdf" download="NguyenChuongHao_Intern_Java.pdf" class="flex-1 text-center bg-green-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-600 transition-colors">Tải xuống</a>
+      <div class="cv-card">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-2xl">🇬🇧</span>
+          <span class="font-semibold text-white">CV Tiếng Anh</span>
+        </div>
+        <div class="flex gap-3">
+          <a href="CV_Java_Intern_EN.pdf" target="_blank" rel="noopener noreferrer" class="cv-btn-view">👁 Xem</a>
+          <a href="CV_Java_Intern_EN.pdf" download="NguyenChuongHao_CV_EN.pdf" class="cv-btn-download">⬇ Tải xuống</a>
+        </div>
       </div>
     </div>
   </div>
