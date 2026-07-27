@@ -41,13 +41,13 @@ const initializePage = () => {
                 html.classList.add('dark');
                 // Đang tối → hiện icon mặt trời để người dùng chuyển sang sáng
                 if (lightIcon) lightIcon.classList.remove('hidden');
-                if (darkIcon)  darkIcon.classList.add('hidden');
+                if (darkIcon) darkIcon.classList.add('hidden');
                 localStorage.setItem('color-theme', 'dark');
             } else {
                 html.classList.remove('dark');
                 html.classList.add('light');
                 // Đang sáng → hiện icon trăng để người dùng chuyển sang tối
-                if (darkIcon)  darkIcon.classList.remove('hidden');
+                if (darkIcon) darkIcon.classList.remove('hidden');
                 if (lightIcon) lightIcon.classList.add('hidden');
                 localStorage.setItem('color-theme', 'light');
             }
